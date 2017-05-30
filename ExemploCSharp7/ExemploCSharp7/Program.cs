@@ -19,6 +19,13 @@ namespace ExemploCSharp7
                 y++;
             }
 
+            object[] obj = { "Carlos", 10, "string bem grande"};
+
+            foreach(var o in obj)
+            {
+                Teste(o);
+            }
+
             Teste(1);
             Teste("CDS");
 
@@ -29,20 +36,13 @@ namespace ExemploCSharp7
             var c = new Cliente();
             (_, decimal salario) = c;
 
-            var bin = 0b10;
-            var ex = 0x10;
+            var bin = 0b10_11_100;
+            var ex = 0x10_A_E;
 
             var loc = funcaoLocal(2);
 
             int funcaoLocal(int par) => par * 2;
 
-            RefCli(ref c);
-
-        }
-
-        public static void RefCli(ref Cliente c)
-        {
-            c.Nome = "Maria";
         }
 
         public static (string nome, double salario) Pessoa()
@@ -52,16 +52,16 @@ namespace ExemploCSharp7
 
         public static void Teste(object o)
         {
-            if(o is int i)
-            {
-                i++;
-                Console.WriteLine($"Inteiro: {i}");
-            }
-            if(o is string s)
-            {
-                s += " mudou";
-                Console.WriteLine($"String: {s}");
-            }
+            //if(o is int i)
+            //{
+            //    i++;
+            //    Console.WriteLine($"Inteiro: {i}");
+            //}
+            //if(o is string s)
+            //{
+            //    s += " mudou";
+            //    Console.WriteLine($"String: {s}");
+            //}
 
             switch(o)
             {
@@ -70,9 +70,14 @@ namespace ExemploCSharp7
                         Console.WriteLine("int");
                         break;
                     }
+                case string ss when ss.Length > 10:
+                    {
+                        Console.WriteLine("string > 10 - "+ss);
+                        break;
+                    }
                 case string ss:
                     {
-                        Console.WriteLine("string");
+                        Console.WriteLine("string - " + ss);
                         break;
                     }
             }
