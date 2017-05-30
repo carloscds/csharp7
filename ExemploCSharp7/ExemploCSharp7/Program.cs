@@ -43,6 +43,8 @@ namespace ExemploCSharp7
 
             int funcaoLocal(int par) => par * 2;
 
+            c.MetodoComErroSeNaoPassarValor(null);
+
         }
 
         public static (string nome, double salario) Pessoa()
@@ -90,7 +92,10 @@ namespace ExemploCSharp7
         private string _nome;
         private decimal _salario;
 
-        public string Nome { get { return _nome; } set { _nome = value; } }
+        //public string Nome { get { return _nome; } set { _nome = value; } }
+        public string Nome { get => _nome; set => _nome = value; }
         public void Deconstruct(out string nome, out decimal salario) { nome = "Carlos"; salario = 100; }
+
+        public void MetodoComErroSeNaoPassarValor(object nome) => _nome = (string)nome ?? throw new Exception("Erro");
     }
 }
